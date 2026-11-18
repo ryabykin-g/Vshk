@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ВШК — смена 21 ноября</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@400;600;700&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#0B0812;--card:#150F22;--fg:#F4F0FA;--muted:#B8AECB;--pink:#FF2E93;--gold:#FFC83D;--line:#4A3A66;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Montserrat',Arial,sans-serif;line-height:1.5}
+h1,h2,h3{font-family:'Oswald','Arial Narrow',sans-serif;margin:0;letter-spacing:2px}
+a{color:var(--gold)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:12px;flex-wrap:wrap}
+nav .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:28px;letter-spacing:5px;color:var(--pink)}
+nav div a{margin-left:16px;text-decoration:none;color:var(--muted);font-size:14px}
+.hero{position:relative;overflow:hidden;border:2px solid var(--pink);padding:32px 24px;margin-top:8px}
+.hero::before{content:"";position:absolute;inset:-60%;background:conic-gradient(from 0deg,#ff2e9333,#0000,#ffc83d22,#0000,#6a2eff33,#0000,#ff2e9333);animation:spin 14s linear infinite;pointer-events:none}
+.hero>*{position:relative}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero h1{font-size:clamp(56px,16vw,110px);line-height:1;color:var(--pink);letter-spacing:8px}
+.sub{color:var(--muted);letter-spacing:4px;text-transform:uppercase;font-size:13px}
+.shift{margin-top:6px;font-family:'Oswald',sans-serif;font-size:clamp(20px,5vw,30px);color:var(--fg);letter-spacing:2px}
+.badge{display:inline-block;margin:16px 0 4px;padding:4px 12px;border:1px solid var(--gold);color:var(--gold);font-size:13px;letter-spacing:2px}
+.clock{font-family:'Oswald',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:700;color:var(--gold);line-height:1.1}
+.clabel{color:var(--muted);font-size:14px;letter-spacing:2px;text-transform:uppercase}
+.prog{height:6px;background:#2a2040;margin:14px 0}
+.prog b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold))}
+.guests{font-size:17px}
+.guests b{font-family:'Oswald',sans-serif;font-size:30px;color:var(--pink)}
+.eq{display:flex;gap:4px;align-items:flex-end;height:44px;margin-top:12px}
+.eq i{width:7px;background:var(--pink);height:10%;animation:eq .9s ease-in-out infinite alternate;animation-delay:calc(var(--i)*-.13s)}
+.idle .eq i{animation-play-state:paused;height:10%}
+@keyframes eq{to{height:100%}}
+.ctrl{margin-top:14px;font-size:13px;color:var(--muted)}
+button{font:inherit;background:none;color:var(--fg);border:1px solid var(--line);padding:6px 14px;cursor:pointer;margin-right:10px}
+button.on{border-color:var(--pink);color:var(--pink)}
+section{margin-top:44px}
+h2{font-size:32px;color:var(--gold);margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{border:1px solid var(--line);padding:12px 16px;background:var(--card)}
+.stat b{display:block;font-family:'Oswald',sans-serif;font-size:36px;color:var(--pink)}
+.stat span{font-size:13px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media(max-width:760px){.cols{grid-template-columns:1fr}}
+.feed{list-style:none;margin:0;padding:0;border:1px solid var(--line);background:var(--card);min-height:300px}
+.feed li{padding:9px 14px;border-bottom:1px solid #2a2040;font-size:14px;animation:in .4s}
+.feed li b{color:var(--gold);margin-right:8px;font-family:'Oswald',sans-serif;letter-spacing:1px}
+.feed li.empty{color:var(--muted)}
+@keyframes in{from{opacity:0;transform:translateX(-12px)}}
+.tl{list-style:none;margin:0;padding:0;border:1px solid var(--line);background:var(--card)}
+.tl li{padding:10px 14px;border-bottom:1px solid #2a2040;font-size:15px;color:var(--muted)}
+.tl li.cur{color:var(--fg);border-left:4px solid var(--pink);background:#24143a}
+.tl li b{color:var(--gold);margin-right:10px;font-family:'Oswald',sans-serif}
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.room{border:2px solid var(--pink);background:var(--card);padding:14px 16px}
+.room h3{font-size:22px}
+.room small{display:block;color:var(--muted);font-size:13px;min-height:20px;margin:2px 0 8px}
+.bar{height:8px;background:#2a2040}
+.bar b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));transition:width .25s}
+.room .n{font-size:13px;margin-top:6px;color:var(--gold)}
+table{width:100%;border-collapse:collapse;border:2px solid var(--pink);font-size:17px}
+td{padding:10px 16px;border-bottom:1px solid var(--line)}
+td:first-child{color:var(--gold);font-weight:700;width:34%}
+.price{font-family:'Oswald',sans-serif;font-size:56px;color:var(--gold);font-weight:700}
+.contacts{border:2px solid var(--pink);padding:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.phone{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;letter-spacing:2px;text-decoration:none}
+footer{margin:40px 0 24px;text-align:center;font-size:12px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.hero::before,.eq i,.feed li{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><span class="logo">ВШК</span><div><a href="#live">Смена</a><a href="#rooms">Комнаты</a><a href="#tariff">Тариф</a><a href="#contacts">Контакты</a></div></nav>
+
+<header class="hero idle" id="hero">
+<div class="sub">Ночной клуб · пос. Овощной</div>
+<h1>ВШК</h1>
+<div class="shift">Смена: в ночь на субботу, 21 ноября 2026 · 00:00–05:00</div>
+<div class="badge" id="badge">СКОРО</div>
+<div class="clock" id="clock">--:--:--</div>
+<div class="clabel" id="clabel"></div>
+<div class="prog"><b id="prog"></b></div>
+<div class="guests">Сейчас в клубе: <b id="guests">0</b> гостей</div>
+<div class="eq" aria-hidden="true"></div>
+<div class="ctrl"><span id="note">Время по часам вашего устройства.</span></div>
+</header>
+
+<section id="live">
+<h2>Что происходит</h2>
+<div class="stats">
+<div class="stat"><b id="sB">0</b><span>бутылок открыто</span></div>
+<div class="stat"><b id="sH">0</b><span>кальянов ушло</span></div>
+<div class="stat"><b id="sS">0</b><span>вращений рулетки</span></div>
+<div class="stat"><b id="sP">0%</b><span>загрузка клуба</span></div>
+</div>
+<div class="cols">
+<ul class="feed" id="feed"></ul>
+<ul class="tl" id="tl"></ul>
+</div>
+</section>
+
+<section id="rooms">
+<h2>Комнаты</h2>
+<div class="rooms" id="roomGrid"></div>
+</section>
+
+<section id="tariff">
+<h2>Тариф «Движуха +»</h2>
+<div class="price">5 000 ₽</div>
+<table>
+<tr><td>Стол</td><td>Включён в тариф</td></tr>
+<tr><td>Еда</td><td>Фирменные позиции</td></tr>
+<tr><td>Напитки</td><td>2 бутылки на выбор</td></tr>
+<tr><td>Зоны</td><td>Доступ в стрип-комнату и игровую</td></tr>
+<tr><td>Кальян</td><td>Безлимитный, на выбор</td></tr>
+<tr><td>Казино</td><td>Возможна доплата</td></tr>
+</table>
+</section>
+
+<section id="contacts">
+<h2>Контакты</h2>
+<div class="contacts">
+<div>пос. Овощной, Солнечная 16<br><span style="color:var(--muted);font-size:14px">Смена: в ночь на субботу, 21 ноября, с 00:00 до 05:00 · 18+</span></div>
+<a class="phone" href="tel:+79381155114">+7 (938) 115-51-14</a>
+</div>
+</section>
+
+<footer>ВШК работает на базе ООО «Ночной Город»</footer>
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var pad=function(n){return (n<10?'0':'')+n};
+var fmt=function(t){return pad(Math.floor(t/60))+':'+pad(Math.floor(t%60))};
+var rnd=function(a,b){return a+Math.floor(Math.random()*(b-a+1))};
+var pick=function(a){return a[rnd(0,a.length-1)]};
+var START=new Date(2026,10,21,0,0,0).getTime(),END=START+5*3600000;
+var ROOMS=[
+{n:'Главный зал',cap:150,p:150,s:90,st:function(t){return t<45?'Разогрев, DJ настраивает пульт':'Танцпол качает'}},
+{n:'VIP-ложи',cap:24,p:140,s:110,st:function(){return 'Столы заняты, официанты бегают'}},
+{n:'Стрип-комната 18+',cap:30,p:190,s:70,st:function(t){return t<100?'Готовится программа':(t%60<40?'Шоу идёт':'Перерыв между выходами')}},
+{n:'Игровая',cap:20,p:120,s:100,st:function(t){return ['Идёт партия в бильярд','Турнир на приставках','Настолки в разгаре'][Math.floor(t/7)%3]}},
+{n:'Казино',cap:36,p:210,s:80,st:function(t){return t>=180?'Покерный турнир':'Рулетка и блэкджек'}},
+{n:'Кальянная лаунж',cap:40,p:170,s:100,st:function(){return 'Дым коромыслом, кальяны на выбор'}},
+{n:'Бар',cap:50,p:150,s:100,st:function(){return 'Шейкеры гремят без остановки'}},
+{n:'Караоке-кабинки',cap:24,p:250,s:70,st:function(t){return t>=240?'Караоке-баттл':'Кабинки разогреваются'}},
+{n:'Фуд-зона',cap:30,p:130,s:90,st:function(){return 'Фирменные позиции летят на столы'}}
+];
+var LINE=[[0,'Открытие, первые гости, разогрев'],[60,'DJ-сет на главной сцене'],[120,'Шоу-программа в стрип-комнате'],[180,'Турнир в казино'],[240,'Караоке-баттл'],[300,'Закрытие']];
+var FL=['клубника-мята','двойное яблоко','арбуз-лёд','виноград','мятная жвачка'];
+var roomEls=[],grid=$('roomGrid');
+ROOMS.forEach(function(r){
+var d=document.createElement('div');d.className='room';
+d.innerHTML='<h3></h3><small></small><div class="bar"><b></b></div><div class="n"></div>';
+d.querySelector('h3').textContent=r.n;grid.appendChild(d);roomEls.push(d);
+});
+var tl=$('tl');
+var tlEls=LINE.map(function(l){var li=document.createElement('li');li.innerHTML='<b>'+fmt(l[0])+'</b>';li.appendChild(document.createTextNode(l[1]));tl.appendChild(li);return li});
+var eq=document.querySelector('.eq');
+for(var k=0;k<22;k++){var e=document.createElement('i');e.style.setProperty('--i',k);eq.appendChild(e)}
+var mode='',t=0,B=0,H=0,S=0,acc=0,cur=-2,last=performance.now();
+var crowd=function(t){return Math.max(.06,Math.min(1,.12+.9*Math.exp(-Math.pow((t-160)/85,2))))};
+function push(txt){
+var ul=$('feed'),li=document.createElement('li');
+var b=document.createElement('b');b.textContent=fmt(t);li.appendChild(b);li.appendChild(document.createTextNode(txt));
+ul.insertBefore(li,ul.firstChild);
+while(ul.children.length>9)ul.removeChild(ul.lastChild);
+}
+function spawn(){
+var c=[
+function(){B++;return 'Ложа №'+rnd(1,8)+': открыли ещё бутылку'},
+function(){H++;return 'Кальянная: ушёл кальян «'+pick(FL)+'»'},
+function(){S++;return 'Казино: на рулетке выпало '+rnd(0,36)},
+function(){return 'Казино: за покерным столом банк '+rnd(10,90)*1000+' фишек'},
+function(){return 'Игровая: в бильярде забит красивый шар'},
+function(){return 'Бар: заказали фирменный коктейль «Овощной»'},
+function(){return 'Фуд-зона: вылетел фирменный сет «Солнечная 16»'},
+function(){return 'Танцпол: DJ поднял руки, зал ревёт'},
+function(){return 'Караоке: кабинка №'+rnd(1,6)+' сорвала голос'},
+function(){H++;return 'Лаунж: гости заказали кальян на всю компанию'}
+];
+if(t>=100&&t%60<40)c.push(function(){return 'Стрип-комната: новая программа, зал аплодирует'});
+if(t>=180)c.push(function(){S++;return 'Казино: турнир, остаётся '+rnd(4,20)+' игроков'});
+push(pick(c)());
+}
+function totals(tm){
+var b=0,h=0,s=0;
+for(var m=0;m<tm;m++){var ev=4+12*crowd(m);b+=ev*.11;h+=ev*.2;s+=ev*.12*(m>=180?2:1)}
+B=Math.round(b);H=Math.round(h);S=Math.round(s);
+}
+function enter(prev){
+$('feed').innerHTML='';B=H=S=0;acc=0;cur=-2;
+$('hero').className='hero'+(mode==='live'?'':' idle');
+if(mode==='live'){
+var save=t;
+for(var k=5;k>=1;k--){t=Math.max(0,save-k*.4);spawn()}
+t=save;totals(t);
+if(prev==='before')push('Двери открыты, смена началась');
+else if(prev==='')push('Вы зашли посреди смены, всё уже кипит');
+}else if(mode==='before'){
+var li=document.createElement('li');li.className='empty';li.textContent='Пока тихо. Лента оживёт ровно в 00:00 в ночь на субботу.';$('feed').appendChild(li);
+}else{
+totals(300);
+var l2=document.createElement('li');l2.className='empty';l2.textContent='Смена закончилась. До следующей смены!';$('feed').appendChild(l2);
+}
+}
+function render(now){
+var live=mode==='live',clock,label,badge;
+if(mode==='before'){
+var d=Math.max(0,START-now),s=Math.floor(d/1000),dd=Math.floor(s/86400);
+clock=(dd>0?dd+' д ':'')+pad(Math.floor(s%86400/3600))+':'+pad(Math.floor(s%3600/60))+':'+pad(s%60);
+label='до открытия смены';badge='СКОРО · СБ 21 НОЯБРЯ';
+}else if(live){
+var q=Math.floor(t*60);
+clock='СБ '+pad(Math.floor(q/3600))+':'+pad(Math.floor(q%3600/60))+':'+pad(q%60);
+var rem=Math.ceil(300-t);
+label='идёт смена · до закрытия '+Math.floor(rem/60)+' ч '+pad(rem%60)+' мин';
+badge=t<5?'ОТКРЫВАЕМСЯ':(t>270?'ПОСЛЕДНИЙ ЧАС':'НОЧЬ В РАЗГАРЕ');
+}else{clock='СБ 05:00:00';label='смена окончена';badge='СМЕНА ЗАВЕРШЕНА'}
+$('clock').textContent=clock;$('clabel').textContent=label;$('badge').textContent=badge;
+$('prog').style.width=(live?t/3:(mode==='after'?100:0))+'%';
+var cr=crowd(t),sum=0,capSum=0;
+ROOMS.forEach(function(r,i){
+var f=0;
+if(live)f=Math.max(0,Math.min(1,cr*(.3+.7*Math.exp(-Math.pow((t-r.p)/r.s,2)))*(1+.09*Math.sin(t/2.5+i*2))));
+var cnt=Math.round(f*r.cap);sum+=cnt;capSum+=r.cap;
+var el=roomEls[i];
+el.querySelector('small').textContent=live?r.st(t):(mode==='before'?'Откроемся в 00:00':'Закрыто до следующей смены');
+el.querySelector('.bar b').style.width=(f*100)+'%';
+el.querySelector('.n').textContent=cnt+' из '+r.cap;
+});
+$('guests').textContent=sum;
+$('sP').textContent=Math.round(sum/capSum*100)+'%';
+$('sB').textContent=B;$('sH').textContent=H;$('sS').textContent=S;
+var idx=live?0:(mode==='after'?5:-1);
+if(live)LINE.forEach(function(l,i){if(t>=l[0])idx=i});
+if(idx!==cur){cur=idx;tlEls.forEach(function(li,i){li.className=i===idx?'cur':''})}
+}
+function tick(){
+var now=Date.now(),pn=performance.now(),real=Math.min((pn-last)/1000,1);last=pn;
+var m;
+if(now<START){m='before';t=0}
+else if(now<END){m='live';t=(now-START)/60000}
+else{m='after';t=300}
+if(m!==mode){var prev=mode;mode=m;enter(prev)}
+if(mode==='live'){
+var dt=real/60;
+acc+=dt*(4+12*crowd(t));
+var n=Math.min(Math.floor(acc),2);acc-=Math.floor(acc);
+for(var j=0;j<n;j++)spawn();
+}
+render(now);
+}
+setInterval(tick,250);
+tick();
+})();
+</script>
+</body>
+</html>
